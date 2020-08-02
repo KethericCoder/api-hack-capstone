@@ -23,6 +23,32 @@ body {
   padding: 1em 0;
 }
 
+.icon, .icon-top {
+  display: none;
+} 
+
+.icon-container {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	width: 80%;
+	margin: auto;
+}
+
+.icon-container img {
+  width: 100%;
+}
+.icon:hover .icon-top {
+display: inline;
+        position: absolute;
+        top: 0;
+        left: 0;
+}
+
+.icon{
+  position: relative;
+  display: inline-block;
+}
+
 header,
 aside,
 article,
