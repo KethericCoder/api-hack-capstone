@@ -1,12 +1,10 @@
 * body { 
   box-sizing: border-box;
-  background-image: url('images/background.jpg');
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
 }
 
-
+.hide {
+  display: none;
+}
 
 .grid {
   display: grid;
@@ -61,9 +59,23 @@ header,
 aside,
 article,
 footer {
-  background: #eaeaea;
+  background-image: url(images/header-color.jpg);
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 25vh;
+  height: 25vh
+}
+
+aside {
+  height: 45vh;
+}
+
+.header {
+  text-align: start;
+  font-family: 'Bellota', cursive;
+}
+
+.horoscope {
+  background-image: url(images/header-color.jpg);
+  width: 100%;
 }
