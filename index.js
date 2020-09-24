@@ -2,14 +2,17 @@
 // apiKey="NhmXA7rpEvOYKSTQLjpGHNpnk7puUY54wiHuT2eO"
 // searchURL="https://api.nasa.gov/planetary/"
 
-// helpful code
-const searchURL="https://horoscopeapi-horoscope-v1.p.rapidapi.com/daily?date=today"
+
+$( ".icon-top" ).click(function() {
+  $(".horoscope").toggleClass('hide');
+
+});
+
+const searchURL="https://aztro.sameerkumar.website"
 
 function displayResults(responseJson) {
-  // if there are previous results, remove them
   console.log(responseJson);
   $(".horoscope").empty();
-  // iterate through the items array
   for (let i = 0; i < responseJson.items.length; i++) {
 
     $(".horoscope").append(
@@ -19,51 +22,44 @@ function displayResults(responseJson) {
       </li>`
     );
   }
-  $("p").removeClass("hidden");
 }
 
-// function getNationalParks(query, maxResults = 10) {
-//   const params = {
+ function getDailyHoroscope(query, maxResults = 10) {
+  const params = {
 
-//
-//     q: query,
-//     maxResults,
-//   };
-//   const queryString = formatQueryParams(params);
-//   const url = searchURL + "?" + queryString;
+    sign: 'aries, taurus, gemini, cancer, leo, virgo, libra, scorpio, sagittarius, capricorn, aquarius, pisces'
+    day: date,
+    q: query,
+    maxResults,
+  };
+   const queryString = formatQueryParams(params);
+   const url = searchURL + "?" + queryString;
 
-//   console.log(url);
+   console.log(url);
 
-//   fetch(url)
-//     .then((response) => {
-//       if (response.ok) {
-//         return response.json();
-//       }
-//       throw new Error(response.statusText);
-//     })
-//     .then((responseJson) => displayResults(responseJson))
-//     .catch((err) => {
-//       $("#js-error-message").text(`Something went wrong: ${err.message}`);
-//     });
-// }
+  fetch(url)
+    .then((response) => {
+      if (response.ok) {
+        return response.json();
+      }
+      throw new Error(response.statusText);
+    })
+    .then((responseJson) => displayResults(responseJson))
+    .catch((err) => {
+      $("#js-error-message").text(`Something went wrong: ${err.message}`);
+    });
+}
 
-// function watchForm() {
-//   $("form").submit((event) => {
-//     event.preventDefault();
-//     const searchTerm = $("#js-search-term").val();
-//     const maxResults = $("#js-max-results").val();
-//     getNationalParks(searchTerm, maxResults);
-//   });
-// }
+function watchForm() {
+  $("form").submit((event) => {
+    event.preventDefault();
+    const searchTerm = $(".icon-top").val();
+    const maxResults = $("#js-max-results").val();
+    getDailyHoroscope(searchTerm, maxResults);
+  });
+}
 
-// $(watchForm);
-
-
-
-$( ".icon-top" ).click(function() {
-  alert("HEY")
-  $(".horoscope").toggleClass('hide');
-});
+$(watchForm);
 
 
 
