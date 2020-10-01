@@ -8,13 +8,13 @@ $( ".icon-top" ).click(function() {
 
 });
 
-const searchURL="https://aztro.sameerkumar.website"
+const searchURL="https://json.astrologyapi.com/v1/sun_sign_prediction/daily/"
 
 function displayResults(responseJson) {
   console.log(responseJson);
   $(".horoscope").empty();
   for (let i = 0; i < responseJson.items.length; i++) {
-
+  $(".icon-top").click(function(){
     $(".horoscope").append(
       `<li><h3>${responseJson.data[i].fullname}</h3>
       <p>${responseJson.data[i].description}</p>
@@ -24,13 +24,9 @@ function displayResults(responseJson) {
   }
 }
 
- function getDailyHoroscope(query, maxResults = 10) {
+ function getDailyHoroscope(params)
   const params = {
-
-    sign: 'aries, taurus, gemini, cancer, leo, virgo, libra, scorpio, sagittarius, capricorn, aquarius, pisces'
-    day: date,
-    q: query,
-    maxResults,
+    zodiacName: 'aries, taurus, gemini, cancer, leo, virgo, libra, scorpio, sagittarius, capricorn, aquarius, pisces'
   };
    const queryString = formatQueryParams(params);
    const url = searchURL + "?" + queryString;
